@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "Qran",
+  "description": "简单快捷的翻译器 Simple and Convenient Translator",
+  "version": "1.0.0",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png",
+    "256": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/vendor.js",
+        "js/content_script.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "js/vendor.js",
+      "js/background.js"
+    ]
+  },
+  "permissions": [
+    "<all_urls>",
+    "storage",
+    "notifications",
+    "clipboardRead"
+  ]
+}
