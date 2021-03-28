@@ -13,7 +13,7 @@ function Popup() {
   const styles = useStyles();
   const {
     inputValue, setInputValue,
-    outputValue,
+    outputValue, setOutputValue,
     srcLang, setSrcLang,
     dstLang, setDstLang,
     translate
@@ -36,6 +36,11 @@ function Popup() {
 
   const copyText = () => {
     clipboard.copy();
+  }
+
+  const clearText = () => {
+    setInputValue('');
+    setOutputValue('');
   }
 
   const InputTextField = useMemo(() => (
@@ -81,6 +86,16 @@ function Popup() {
           fullWidth
           onClick={() => copyText()}>
           复制翻译内容
+        </Button>
+        <Divider className={styles.horizontalBlankSpace} />
+        <Button
+          variant='contained'
+          disableElevation
+          disableRipple
+          className={styles.clearBtn}
+          fullWidth
+          onClick={() => clearText()}>
+          清空
         </Button>
       </Box>
       <Divider className={styles.horizontalBlankSpace} />
@@ -139,6 +154,13 @@ const useStyles = makeStyles({
     color: '#ffffff',
     '&:hover': {
       backgroundColor: '#85a5ff',
+    }
+  },
+  clearBtn: {
+    backgroundColor: '#40a9ff',
+    color: '#ffffff',
+    '&:hover': {
+      backgroundColor: '#69c0ff',
     }
   },
   horizontalBlankSpace: {
